@@ -1,20 +1,73 @@
 #main{
   background-color: #FF8800;
-  width: 500px;
+  width: 1000px;
+  height: 1000px;
+  display: grid;
+  grid-template-rows: 50px 1f 100px;
+  grid-template-columns: 100px 1f;
+  grid-template-areas:
+    "title title"
+    "sidemenu panels"
+    "bottommenu bottommenu";
   margin: auto;
 }
 
+#title{
+  background-color: #FF00FF;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 3px 3px 2px #00FFFF;
+  grid-area: title;
+}
+
+#sidemenu{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #880000;
+  grid-area: sidemenu;
+}
+
+input[name="sidemenu"]{
+  display: none;
+}
+
+.sidemenu{
+  display: block;
+  background-color: #88ffff;
+  width: 50%;
+  height: 50px;
+  order: -1;
+}
+
+input:checked+.sidemenu{
+  background-color: #0000FF;
+}
+
+.content_class{
+  display: none;
+}
+
+input:checked+.sidemenu+.content_class{
+  display: block;
+}
 
 #panels{
   font-size: 0;
+  background-color: #FFFF00;
+  grid-area: panels;
+}
+
+#bottommenu{
+  background-color: #660000;
+  grid-area: bottommenu;
 }
 
 .panel{
   display: inline-block;
   margin: 0px;
   padding: 0px;
-  border: 1px solid black;
+  border: 3px solid black;
   background-color: #FF0000;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
