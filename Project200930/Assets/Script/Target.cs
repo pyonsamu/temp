@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+
+    public GameObject target;
     public GameObject tipfront;
     public GameObject tipbottom;
 
@@ -23,7 +25,7 @@ public class Target : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("hit");
+        //Debug.Log("hit");
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,21 +33,36 @@ public class Target : MonoBehaviour
         if(Time.time - timer > 0.1)
         {
             timer = Time.time;
-            //Debug.Log("hit2");
             RaycastHit[] hit = new RaycastHit[100] ;
-            int point = 0;
             foreach (RaycastHit h in Physics.RaycastAll(tipbottom.transform.position, tipfront.transform.position - tipbottom.transform.position))
             {
                 if (h.collider)
                 {
-                    hit[point] = h;
-                    point++;
+                    if (h.collider.tag.Equals("tipfront"))
+                    {
+                        hit[0] = h;
+                    }
+                    else if (h.collider.tag.Equals("target"))
+                    {
+                        hit[1] = h;
+                    }
                 }
             }
             float dis = hit[0].distance - hit[1].distance;
-            Debug.Log(dis);
+            
+            if (dis > 0)
+            {
+                moveTarget((tipfront.transform.position - tipbottom.transform.position).normalized * dis);
+            }
+            
         }
         
     }
     
+    private void moveTarget(Vector3 vecpow)
+    {
+        Rigidbody rb = target.GetComponent<Rigidbody>();
+        rb.AddForce(vecpow);
+
+    }
 }
