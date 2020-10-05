@@ -62,9 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Target.cs" />
-    <Compile Include="Assets\Script\TipFront.cs" />
-    <Compile Include="Assets\Script\VirtualFinger.cs" />
+    <Compile Include="Assets\FingerTipTouch201005\Script\Target.cs" />
+    <Compile Include="Assets\FingerTipTouch201005\Script\TipFront.cs" />
+    <Compile Include="Assets\FingerTipTouch201005\Script\VirtualFinger.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
