@@ -8,7 +8,7 @@ void setup() {
   pinMode(12, OUTPUT); // 回転方向 (HIGH/LOW)
   pinMode(9, OUTPUT); // ブレーキ (HIGH/LOW)
   pinMode(3, OUTPUT); // A PWMによるスピード制御 (0-255)
-  pos=0;
+  pos=1023;
 }
 
 void loop() {
@@ -63,7 +63,7 @@ int dataread(){
       num += buf[(data_size-i)-1]*dub;
       dub *= 10;
     }
-    Serial.println(num);
+    //Serial.println(num);
     return num;
   }else{
     return -1;
