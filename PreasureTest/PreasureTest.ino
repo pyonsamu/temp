@@ -1,4 +1,5 @@
-int R1 = 10000; // 10kΩ
+int R1 = 920; // 10kΩ
+double fg;
  
 void setup() {
   Serial.begin(9600);
@@ -30,7 +31,9 @@ void loop() {
     }else{
       Serial.print(val, 0);
     }    
-    Serial.println("Ω ");        
+    Serial.print("Ω ");
+    fg = 880.79/val + 47.96;
+    Serial.println(fg);
   }   
   
   delay(100);

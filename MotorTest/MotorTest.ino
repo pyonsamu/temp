@@ -1,8 +1,11 @@
-#define SPEED 240
+#define SPEED 255
+int TR = 2;
 
 int pos;
 
 void setup() {
+  pinMode(TR,OUTPUT);
+  
   Serial.begin(9600);
   // モーターAの制御用ピン設定
   pinMode(12, OUTPUT); // 回転方向 (HIGH/LOW)
@@ -13,6 +16,10 @@ void setup() {
 
 void loop() {
 
+
+  Serial.println(analogRead(A3));
+
+  
   
   int vr = analogRead(A2); //A2にボリューム部の2ピンを接続。1=5V,0=GND
   
@@ -26,6 +33,9 @@ void loop() {
       pos = num;
     }
   }
+
+
+  
  
 
  // モーターA: 正転
@@ -34,6 +44,7 @@ void loop() {
   while(pos-vr>=10){
     vr = analogRead(A2);
     analogWrite(3, SPEED);
+    Serial.println(analogRead(A3));
   }
   digitalWrite(9, HIGH);
 
@@ -43,6 +54,7 @@ void loop() {
   while(vr-pos>=10){
     vr = analogRead(A2);
     analogWrite(3, SPEED);
+    Serial.println(analogRead(A3));
   }
   digitalWrite(9, HIGH);
 
